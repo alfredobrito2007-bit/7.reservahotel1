@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Reserva Hotel</h1>
+    <form action="procesa.php" onsubmit="return ValidaFormulario()">
+        <label for="">Nombre y apellidos</label>
+        <input type="text" name="nombre" id="nombre" >
+
+
+        </p>
+
+        <label for="">Dias de alojamiento</label>
+        <input type="number" id="dias" value="1">
+        <p></p>
+
+        <label for="">Fumador</label>
+        <input type="checkbox" id="fuma">
+        <p></p>
+
+        <label for="">Fecha de alojamiento</label>
+        <input type="date" id="fecha">
+        <p></p>
+
+        <input type="submit" id="reser" value="Reservar">
+
+    </form>
+
+    <script>
+
+        function ValidaFormulario(){
+            let nombre = document.getElementById("nombre").value;
+            if (nombre.length <10){
+                alert ("El nombre tiene que tener por lo menos 10 caracteres");
+                return false;
+            }
+            
+            let dias = document.getElementById("dias").value;
+            if(dias <3){
+                alert ("Como minimo 3 noches")
+                return false;
+            }
+
+            let fuma = document.getElementById("fuma").checked;
+            if (fuma == true){
+                alert ("No se admiten fumadores");
+                return false;
+            }
+
+            let fecha = document.getElementById("fecha").date;
+            if ("") {
+                alert ("")
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>
