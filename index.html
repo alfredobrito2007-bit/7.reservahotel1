@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .aviso {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>Reserva Hotel</h1>
     <form action="procesa.php" onsubmit="return ValidaFormulario()">
         <label for="">Nombre y apellidos</label>
         <input type="text" name="nombre" id="nombre" >
-
+        <p id="aviso-nombre-ape" class="aviso"></p>
 
         </p>
 
         <label for="">Dias de alojamiento</label>
         <input type="number" id="dias" value="1">
-        <p></p>
+        <p id="aviso-dias" class="aviso"></p>
 
         <label for="">Fumador</label>
         <input type="checkbox" id="fuma">
         <p></p>
 
-        <label for="">Fecha de alojamiento</label>
-        <input type="date" id="fecha">
+        <label for="fecha-llegada">Fecha de alojamiento</label>
+        <input type="date" id="fecha-llegada">
         <p></p>
 
         <input type="submit" id="reser" value="Reservar">
@@ -35,13 +40,17 @@
         function ValidaFormulario(){
             let nombre = document.getElementById("nombre").value;
             if (nombre.length <10){
-                alert ("El nombre tiene que tener por lo menos 10 caracteres");
+                document.getElementById ("aviso-nombre-ape").innerHTML = "El nombre tiene que tener por lo menos 10 caracteres";
+                document.getElementById ("aviso-nombre-ape").focus();
+            
                 return false;
             }
             
             let dias = document.getElementById("dias").value;
             if(dias <3){
-                alert ("Como minimo 3 noches")
+                document.getElementById ("aviso-dias").innerHTML = "Como minimo 3 noches";
+                document.getElementById ("aviso-dias")
+                
                 return false;
             }
 
@@ -51,10 +60,14 @@
                 return false;
             }
 
-            let fecha = document.getElementById("fecha").date;
-            if ("") {
-                alert ("")
-                return false;
+            let fecha = document.getElementById("fecha").value;
+            alert(fecha);
+            let hoy = new date ();
+            alert(hoy);
+            let fechaLlegadaDate = new Date (fechaLlegada);
+            if ( fechaLlegadaDate<hoy ) {
+                alert ("Fecha erronea");
+                return false
             }
         }
 
